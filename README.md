@@ -20,7 +20,7 @@ Este projeto implementa um sistema de backup distribuído que replica arquivos e
 ### Fluxo de Operações
 
 1. O cliente envia uma solicitação de upload ao gerenciador.
-2. O gerenciador seleciona um servidor com base nos recursos disponíveis (espaço em disco, carga de trabalho, etc.).
+2. O gerenciador seleciona um servidor com base nos recursos disponíveis (espaço em disco, limite de conexões ativas, etc.).
 3. O cliente se conecta ao servidor principal e realiza o upload do arquivo.
 4. Após o upload, o servidor principal replica o arquivo em outro servidor, conforme especificado pelo gerenciador.
 5. Os servidores atualizam suas informações de uso de recursos com o gerenciador.
@@ -31,9 +31,37 @@ Este projeto implementa um sistema de backup distribuído que replica arquivos e
 
 - Python 3.10+
 - Bibliotecas: tqdm, os, json, threading, socket, entre outras.
+  
+Para saber qual versão da biblioteca você deve instalar para rodar esse projeto, por favor consulte o arquivo de requirements.txt, aconselho criar um ambiente venv para o projeto
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 
 ### Clonando o Repositório
 
 ```bash
-git clone 
+git clone https://github.com/samyhad/backup_system.git backup_system
 cd backup_system
+```
+
+### Executando o Sistema
+
+Inicie o Gerenciador:
+
+```bash
+python manager.py
+```
+Inicie os Servidores (repita para cada servidor):
+
+```bash
+python server.py
+```
+
+Execute o Cliente para fazer o upload de um arquivo:
+
+```bash
+python client.py --upload <caminho_do_arquivo>
+```
