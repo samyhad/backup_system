@@ -63,5 +63,5 @@ python server.py
 Execute o Cliente para fazer o upload de um arquivo:
 
 ```bash
-python client.py --upload <caminho_do_arquivo>
+python peer.py
 ```
